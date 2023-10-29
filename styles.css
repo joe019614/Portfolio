@@ -1,0 +1,667 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border:none;
+    outline:none;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
+:root{
+    --bg-color:#081b29;
+    --second-bg-color:#112e42;
+    --text-color:#ededed;
+    --main-color:#00abf0;
+}
+html{
+    font-size:60%;
+    overflow-x:hidden;
+}
+body{
+    background: var(--bg-color);
+    color:var(--text-color);
+}
+/* Head */
+.header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:2rem 10%; /* root default x2 */
+    font-size: 20px;
+    background:transparent; /* 透明 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    transition: .5s;
+}
+.header.sticky{
+    background: var(--second-bg-color);
+}
+.logo{
+    font-size: 2.5rem;
+    color:var(--text-color);
+    font-weight:600;
+}
+.navbar a{
+    font-size: 1.7rem;
+    color:var(--text-color);
+    font-weight:500;
+    margin-left:3.5rem;
+    transition: .3s;
+}
+.navbar a:hover,
+.navbar a.active{
+    color:var(--main-color);
+}
+#menu-icon{
+    font-size:3.5rem;
+    color:var(--text-color);
+    cursor:pointer;
+    display:none;    /* responsive先拎出尼 */
+}
+/* JoeIcon */
+/* .JoeIcon{
+    position: absolute;
+    top:25rem;
+    left:105rem;
+    z-index: -1;
+    background: transparent;
+} */
+/* Section */
+section{
+    min-height:100vh;
+    padding:10rem 10% 2rem;
+}
+.home{
+    display:flex;
+    align-items:center;
+    padding: 0 10%;
+    background: url(icon.png)no-repeat;
+    /* background-size: cover; */
+    background-position: top 55% right 17%;
+}
+.home-content{
+    max-width:60rem; /* test vh */
+    z-index:99;
+}
+.home-content h1{
+    font-size:5.5rem;
+    font-weight: 700;
+    line-height: 1.5;
+}
+.home-content .text-animate{
+    position:relative;
+    width:33rem;   /* test */
+}
+.home-content .text-animate h3{
+    font-size: 3rem;
+    font-weight: 700;
+    color:transparent;
+    -webkit-text-stroke: 1px var(--main-color); /* ori 0.7px  test 0.5px */
+    background: linear-gradient(var(--main-color),var(--main-color));
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-position: 0 0;
+    animation: homeBgText 6s linear infinite;
+    animation-delay:1s;
+    /* background 要用linear先可以正係show部份  */
+}
+/*   */
+.home-content p{
+    font-size:1.5rem;
+    margin:2rem 0 3rem; /* ori 3>4 */
+}
+.btn-box{
+    position:relative;
+    display: flex;
+    justify-content: space-between;
+    width: 35rem; /* ori 35 can20*/
+    height: 5rem;
+    /* border:2px solid red; */
+}
+.btn-box .btn{
+    position: relative;
+    display: inline-flex;
+    justify-content: center; /* can del*/
+    align-items: center;
+    width:15rem;
+    height: 100%; /* default 100already */
+    background:var(--main-color);
+    border:.2rem solid var(--main-color); /* help check cv show border */
+    border-radius: 0.8rem; /* 8px */
+    font-size: 1.8rem; /* 18px */
+    font-weight:600;
+    letter-spacing:.1rem;
+    color:var(--bg-color);
+    z-index: 1;
+    overflow: hidden;
+    transition: .5s;
+}
+.btn-box .btn:nth-child(2){  /* :nth-child(2) 選第2個btn */
+    background: transparent;
+    color:var(--main-color);  
+}
+.btn-box .btn:nth-child(2):hover{
+    color:var(--bg-color);
+}
+.btn-box .btn:nth-child(2)::before{
+    background: var(--main-color);
+    
+}
+.btn-box .btn::before{
+    content: "";
+    position: absolute;
+    top:0;
+    left:0;
+    background: var(--bg-color);
+    width:0%;
+    height: 100%;
+    z-index:-1;
+    transition: 0.3s;
+}
+.btn-box .btn:hover{
+    color: var(--main-color);
+}
+.btn-box .btn:hover::before{
+    width:100%;
+}
+
+/* home-sci // github linkedin */
+.home-sci{
+    font-size: 3rem;
+   /*  position: absolute;
+    top:70%;
+    width:30%; */
+    margin-top:3rem;
+    display: flex;
+    gap:0.7rem;
+    /* justify-content: space-between; */
+    /* border:2px solid red; */
+}
+.home-sci a{
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width:4rem;
+    height:4rem;
+    background: transparent;
+    border:0.2rem solid var(--main-color);
+    border-radius: 50%;
+    color:var(--main-color); /* 呢part令到禁完好似冇色冇反應咁 */
+    z-index: 1;
+    overflow: hidden; 
+    transition: .5s;
+}
+.home-sci a:hover{
+    color: var(--bg-color);
+}
+.home-sci a::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left:0;
+    width:0%;
+    height:100%;
+    background: var(--main-color);
+    z-index: -1;
+    transition: .5s;
+}
+.home-sci a:hover::before{
+    width:100%;
+}
+/* .home-imgHover{
+    position: absolute;
+    top:0;
+    right:0;
+    width:50%;
+    height:100%;
+    background: transparent;
+    border:2px solid red;
+    transition: 2s;
+} */
+.home-imgHover:hover{
+    background:var(--bg-color);
+    opacity: 0.8;
+}
+/* About */
+.about{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap:2rem;
+    background: var(--second-bg-color);
+    padding-bottom: 6rem;
+}
+.heading{
+    font-size:5rem;
+    margin-bottom:3rem;
+    text-align: center;
+}
+span{
+    color:var(--main-color)
+}
+.about-img{
+    position: relative;
+    width:20rem;
+    height: 20rem;
+   /*  top:100%;
+    right: 0; */
+    /* border-radius: 50% */;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    /* border: 2px solid red; */
+    /* 30:17 */
+    overflow: hid;
+}
+.about-img img{
+    width:100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 0.2rem solid var(--main-color);
+/*     border-top: 0.2rem solid red;
+    border-bottom: 0.2rem solid blue;
+    border-left: 0.2rem solid green;
+    border-right: 0.2rem solid yellowgreen; */
+    margin-bottom: 3rem;
+}
+.about-img .circle-spin{
+    position: absolute;
+    top:-12%;
+    /* left:50%; */
+    /* transform: translate(-50%,-50%) rotate(0) */;
+    width: 110%;
+    height: 110%;
+    border-radius: 50%;
+    border-top: 0.2rem solid var(--second-bg-color);
+    border-bottom: 0.2rem solid var(--second-bg-color);
+    border-left: 0.2rem solid var(--main-color);
+    border-right: 0.2rem solid var(--main-color);
+    /* https://www.youtube.com/watch?v=Tkp3FDgOueM&list=PLuS0mR6eqLh0uFRzteNjK17F4RDdFukdP&index=77
+    32:01 */
+    animation:aboutSpinner 5s linear infinite;  /* linear 係speed */
+}
+.about-content{
+    text-align: center;
+}
+.about-content h3{
+    font-size:2.5rem;
+}
+.about-content p{
+    font-size: 1.5rem;
+    margin: 2rem 0;
+}
+.btn-box.btns{
+    display: inline-block;
+    /* width: 15rem; */
+    /* border: 1px solid red; */
+}
+.btn-box.btns a::before{
+    background: var(--second-bg-color);
+    /* transition: 3s; */
+}
+
+/* education */
+.education{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 5rem;
+    min-height: auto;
+    /* max-height:auto; */
+    padding-bottom:20rem;
+}
+.education .education-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap:5rem;
+}
+.education-row .education-column{
+    /* flex:1 1 4rem; */ /* flex-grow / flex-shrink / flex-basis */
+    /* border:2px solid red; */
+}
+.education-column .title{
+    font-size:2.5rem;
+    /* margin: 0 0 1.5rem 2rem; */
+}
+.education-column .education-box{
+    border-left: 0.5rem solid var(--main-color);
+    /* padding-left: 1rem; */
+    /* border:2px solid red; */
+}
+.education-box .education-content{
+    position: relative;
+    
+}
+.education-box .education-content::before{
+    content: "";
+    position: absolute; /* 上一層要relative相對 */
+    top:0;
+    left:-1.1rem;
+    width: 2rem;
+    height: 2rem;
+    background: var(--main-color);
+    border-radius: 50%;
+    
+}
+.education-content .content{
+    position: relative;
+    border: 0.2rem solid var(--main-color);
+    padding:1rem;
+    margin:1.5rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    
+}
+.education-content .content::before{
+    content: "";
+    position: absolute;
+    top:0;
+    left:0;
+    width: 0;
+    height: 100%;
+    background: var(--second-bg-color);
+    z-index: -1;
+    transition: 0.5s; /* before transition跟返before */
+}
+.education-content .content:hover::before{
+    width:100%
+}
+.education-content .content .year{
+    font-size:2rem;
+    color:var(--main-color);
+    padding-bottom: 1rem;
+}
+.education-content .content .year i{
+    padding-right: 1rem;
+}
+.education-content .content h3{
+    font-size:2.5rem;
+}
+.education-content .content p{
+    font-size:2rem;
+    padding-top:1rem;
+}
+
+
+/* skills */
+.skills{
+   /*  border:2px solid red; */
+    background-color: var(--second-bg-color);
+}
+.skillsbtn{
+    position: relative;
+    display: inline-flex;
+    justify-content: center; /* can del*/
+    align-items: center;
+    width:15rem;
+    /* height: 100%; */ /* default 100already */
+    background:var(--main-color);
+    border:.2rem solid var(--main-color); /* help check cv show border */
+    border-radius: 0.8rem; /* 8px */
+    font-size: 1.8rem; /* 18px */
+    font-weight:600;
+    letter-spacing:.1rem;
+    color:var(--bg-color);
+   /*  z-index: 1;
+    overflow: hidden;
+    transition: .5s; */
+}
+.skills h2{
+    margin-bottom: 3rem;
+}
+.skills-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   /*  flex-direction: column; */
+    flex-wrap: wrap;
+    gap:2rem;
+    /* min-height: auto; */
+    margin:1rem;
+    /* border:2rem solid red; */
+}
+.skills-container .skills-box{
+    flex: 1 1 30rem;
+    background: var(--second-bg-color);
+    padding:  12rem 2rem;
+    border-radius: 2rem;
+    margin:1rem;
+    border:0.2rem solid var(--bg-color);
+    text-align: center;
+    transition: .5s;
+}
+.skills-container .skills-box:hover{
+    border-color:var(--main-color);
+    transform: scale(1.1); /* 放大1.1 */
+}
+.skills-box i{
+    font-size:7rem;
+    color:var(--main-color)
+}
+.skills-box h3{
+    font-size: 2.5rem;
+}
+.skills-box p{
+    font-size: 1.5rem;
+    margin:1rem 2rem 2rem;
+}
+
+/* portfolio */
+.portfolio{
+    background:var(--bg-color);
+    display: flex;
+   /*  justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+   
+}
+.portfolio h2{
+    margin-bottom: 4-rem;
+}
+.portfolio-container{
+    /* display:grid;
+    grid-template-columns: repeat(3,1fr);
+    align-items: center; */
+    
+    gap:2.5rem;
+    width: auto;
+    margin:3rem;
+    /* border:2px solid #ff0000; */
+}
+.portfolio-container .portfolio-box{
+    position: relative;
+    border-radius: 2rem;
+    box-shadow:0 0 1rem var(--main-color);
+    overflow: hidden;
+    display: flex;  
+    width:auto;
+    height: 100%; /* 圖片大小不同> */
+    /* background-size: cover; */
+}
+.portfolio-box img{
+    width: 100%;
+    /* background-size: cover; */
+    transition: .5s;
+}
+.portfolio-box:hover img{
+    transform:scale(1.2);
+}
+.portfolio-box .portfolio-layer{
+    position: absolute;
+    bottom: 0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: linear-gradient(rgba(0,0,0,0.1),var(--main-color));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 4rem;
+    transform: translateY(100%);
+    transition: .5s;
+}
+.portfolio-box:hover .portfolio-layer{
+    transform: translateY(0%);
+}
+.portfolio-layer h4{
+    font-size: 3rem;
+}
+.portfolio-layer p{
+    font-size:2rem;
+    /* margin:.5rem; */
+}
+.portfolio-layer a{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 6rem;
+    height: 6rem;
+    background: var(--text-color);
+    border-radius: 50%;
+    font-size: 1.5rem;
+}
+.portfolio-layer a i{
+    font-size: 2rem;
+    /* color: var(--second-bg-color); */
+}
+.toTop a{
+    font-size:4rem;
+    position: fixed;
+    bottom: 1rem;
+    right:1rem;
+    border-radius: 2rem;
+    border:.2rem solid var(--main-color);
+    overflow: hidden;
+    z-index: 1;
+}
+.toTop a::before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width:0;
+    height: 100%;
+    background: var(--main-color);
+    z-index: -1;
+    transition: .5s;
+}
+.toTop a:hover::before{
+    width:100%
+}
+
+/* RWD Responsive */
+/* <1440 <1024 <768 <480 <320 */
+/* Breakpoints */
+@media (max-width:1200px){
+    html{
+        font-size:50%;
+    }
+}
+@media (max-width : 1025px) {
+    .header{
+        padding:2rem 5%;
+    }
+    section{
+        padding:10rem 15% 2rem;
+        /* ori 
+        padding:10rem 10% 2rem; */
+    }
+    .home{
+        padding:0 5%;
+    }
+}
+@media (max-width:768px){
+    .header{
+        background: var(--bg-color);
+    }
+    #menu-icon{    /* 手機版meunu */
+        display: block;
+        position: absolute;
+        top:2.5rem;
+        left:5rem;
+        
+    }
+    .navbar{
+        position: absolute;
+        top:100%;
+        left:-100%; /* 0> -100% for rwd */
+        width:100%;
+        padding:1rem 5%;
+        background: var(--second-bg-color);
+        box-shadow: 0 0.5rem 2rem rgba(0,0,0, 1); /* 左右 上下 多少 */
+        /* border:2px solid red; */
+        transition: .5s;
+       /*  transition-delay: .25s; */
+       z-index: 1;
+    }
+    .navbar.active{  /* for responsive menu button */
+        left:0; /* 拉返menu出尼 */
+        /* transition-delay: 0s; */
+    }
+  
+    .navbar a{
+        display: block;
+        font-size: 2.5rem;
+        margin: 1rem 0rem;
+    }
+    .home-imgHover{
+        pointer-events: none;
+        background: var(--bg-color);
+        opacity: 0.6;
+    }
+}
+@media (max-width:480px) {
+    html{
+        font-size:40%;
+    }
+    .home-content h1{
+        display: flex;   /* 名個span可以拉落尼 */
+        flex-direction: column;
+    }
+    .home{
+        background-size: 95%;
+       
+    }
+/*     .home-sci{
+        width:160px;
+        border:2px solid red;
+    }
+    .home-sci a{
+        width:3rem;
+        height: 3rem;
+    } */
+}
+
+
+/* Home fewd animation */
+@keyframes homeBgText{
+    0%,100%{
+        background-position: -35rem 0;
+    }
+    40%{
+        background-position: 0 0;
+    }
+}
+/* @keyframes homeCursorText{
+    0%{
+        width:0%;
+    }
+    35%{
+        width:67%;
+        }
+        
+} */
+@keyframes aboutSpinner{
+    100%{
+        transform: rotate(360deg);
+    }
+}
